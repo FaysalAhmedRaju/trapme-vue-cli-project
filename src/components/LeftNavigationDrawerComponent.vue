@@ -8,7 +8,7 @@
             class="hidden-xs-only"
             floating
             app
-            :class="{ primaryTriangle: !primaryDrawer.mini, primaryTriangle1: primaryDrawer.mini}"
+            :class="{ primaryTriangle: !primaryDrawer.mini, primaryTriangle1: primaryDrawer.mini, leftNavWeight: !primaryDrawer.mini, leftNavWeightMin: primaryDrawer.mini}"
     >
         <v-list
                 dense
@@ -46,13 +46,22 @@
         <div>
             <v-img class="test-click1" src="@/assets/images/a.svg" @click.stop="primaryDrawer.mini = !primaryDrawer.mini"/>
         </div>
+<!--        <div>-->
+<!--            <dash-board primaryDrawer />-->
+<!--        </div>-->
     </v-navigation-drawer>
+
 </template>
 
 <script>
+    // import Dashboard from './components/dashboard.vue'
     export default {
         name: "LeftNavigationDrawerComponent",
+        components:{
+            // 'dash-board' : Dashboard
+        },
         data: () => ({
+            // props: ["primaryDrawer.mini"],
             drawer: false,
             primaryDrawer: {
                 model: null,
@@ -75,6 +84,44 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .primaryTriangle:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 27px;
+        right: -13px;
+        width: 25px;
+        height: 25px;
+        background: #F6F7FB;
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -webkit-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+        -moz-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+        box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+    }
+
+    .primaryTriangle1:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 27px;
+        right: -12px;
+        width: 25px;
+        height: 25px;
+        background: #FFFFFF;
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -webkit-box-shadow: 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+        -moz-box-shadow: 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+        box-shadow: 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+    }
+
+    .leftNavWeight{
+        width: 19.25% !important;
+    }
+    .leftNavWeightMin{
+        width: 6.7% !important;
+    }
 
 </style>

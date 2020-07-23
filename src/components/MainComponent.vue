@@ -1,7 +1,5 @@
 <template>
-    <v-container id="app" style="background-color:#F6F7FB">
-              <dashboard-component/>
-    </v-container>
+    <dashboard-component/>
 </template>
 
 <script>

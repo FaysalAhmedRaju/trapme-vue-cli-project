@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import MainComponent from "../components/MainComponent";
 import About from '../views/About';
 import Login from '../components/LoginComponent';
-
+import Test from '../components/TestComponent';
 Vue.use(VueRouter)
 
   const routes = [
@@ -35,15 +35,22 @@ Vue.use(VueRouter)
   },
  {
      path: '/',
-     redirect: '/login',
-     name: 'login',
-     component: Login
+     redirect: '/main',
+     name: 'main',
+     component: MainComponent
 
-  },{
+  },
+  {
     path: '/login',
-          name: 'login',
-          component: Login
-      }
+    name: 'login',
+    component: Login
+  },
+  {
+      path: '/test',
+      name: 'test',
+      component: Test
+
+  }
 ]
 
 const router = new VueRouter({
