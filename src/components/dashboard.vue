@@ -1,8 +1,9 @@
 <template>
         <div>
                 <v-main
-                        :class="{mainResponsiveClass: !primaryDrawer.mini, mainResponsiveClassMin: primaryDrawer.mini}"
+                      
                 >
+                <!--   :class="{mainResponsiveClass: !primaryDrawer.mini, mainResponsiveClassMin: primaryDrawer.mini}"  -->
                         <v-row >
                                 <v-col cols="6">
                                         <v-text-field
@@ -14,7 +15,7 @@
                                         </v-text-field>
 
                                 </v-col>
-                        </v-row>
+                        </v-row>  
                 </v-main>
 <!--                <div>{{primaryDrawer.mini}}}</div>-->
         </div>

@@ -1,5 +1,13 @@
 <template>
-    <v-app id="inspire">
+    <div>
+    <div class="mb-16">
+
+ <h1>Todo Vuex Practice(parent component)</h1>
+    <todo-list/>
+    <todo-form/>
+
+    </div>
+   
         <v-main>
             <v-container
                     class="fill-height"
@@ -64,11 +72,17 @@
                 </v-row>
             </v-container>
         </v-main>
-    </v-app>
+   </div>
 </template>
 
 <script>
+import TodoList from './TodosList.vue';
+import TodoForm from './TodoForm.vue';
     export default {
+    components:{
+        'todo-list' : TodoList,
+        'todo-form' : TodoForm
+    },
         props: {
             source: String,
         },
