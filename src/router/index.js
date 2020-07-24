@@ -5,6 +5,7 @@ import MainComponent from "../components/MainComponent";
 import About from '../views/About';
 import Login from '../components/LoginComponent';
 import Test from '../components/TestComponent';
+import Map from '../components/MapComponent';
 Vue.use(VueRouter)
 
   const routes = [
@@ -50,7 +51,12 @@ Vue.use(VueRouter)
       name: 'test',
       component: Test
 
-  }
+  },
+      {
+          path: '/map',
+          name: 'map',
+          component: Map
+      }
 ]
 
 const router = new VueRouter({

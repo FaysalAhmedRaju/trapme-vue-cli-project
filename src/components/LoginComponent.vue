@@ -7,7 +7,7 @@
     <todo-form/>
 
     </div>
-   
+
         <v-main>
             <v-container
                     class="fill-height"
@@ -72,6 +72,10 @@
                 </v-row>
             </v-container>
         </v-main>
+        <div style="background-color: yellowgreen">
+            <p>{{count}}</p>
+
+        </div>
    </div>
 </template>
 
@@ -85,6 +89,12 @@ import TodoForm from './TodoForm.vue';
     },
         props: {
             source: String,
+        },
+        computed:{
+            count () {
+
+                return this.$store.state.count
+            }
         },
     }
 </script>

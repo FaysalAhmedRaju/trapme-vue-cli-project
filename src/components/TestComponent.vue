@@ -124,45 +124,28 @@
                 </v-col>
             </v-row>
         </div>
+
+        <div style="background-color: #DCF8FF">
+
+            <p>{{ count }}</p>
+            <p>
+                <button @click="increment">
+                    <v-icon>mdi-plus-thick</v-icon>
+                </button>
+                <button @click="decrement">
+                  <v-icon>
+                      mdi-minus-circle-outline
+                  </v-icon>
+                </button>
+            </p>
+
+        </div>
     </v-container>
 
 </template>
 <script>
     export default {
-        // beforeCreate() {
-        //     console.log("beforecreate is called.");
-        //     alert("beforecreate is called.");
-        // },
-        // created() {
-        //     console.log("created is called");
-        //     alert("created is called");
-        // },
-        // beforeMount() {
-        //     console.log("beforeMount is called");
-        //     alert("beforeMount is called");
-        // },
-        // mounted() {
-        //     console.log("mounted is called");
-        //     alert("mounted is called");
-        // },
-        // beforeUpdate() {
-        //     console.log("beforeUpdate is called");
-        //     alert("beforeUpdate is called");
-        // },
-        // updated() {
-        //     console.log("Updated is called");
-        //     alert("Updated is called");
-        // },
-        // beforeDestroy() {
-        //     console.log("beforeDestroy is called");
-        //     alert("beforeDestroy is called");
-        // },
-        // destroyed() {
-        //     console.log("destroyed is called");
-        //     alert("destroyed is called");
-        // },
         data () {
-
             return {
                 loading: false,
                 items: [],
@@ -237,7 +220,23 @@
                 val && val !== this.select && this.querySelections(val)
             },
         },
+        computed:{
+            count () {
+
+                return this.$store.state.count
+            }
+        },
         methods: {
+            increment () {
+                console.log("you clicked increment");
+                // this.$store.state.count++;
+                this.$store.commit('increment')
+            },
+            decrement () {
+                console.log("you clicked decrement");
+                this.$store.commit('decrement')
+                // this.$store.state.count--;
+            },
             querySelections (v) {
 
                 this.loading = true
