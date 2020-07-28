@@ -6,6 +6,7 @@ import About from '../views/About';
 import Login from '../components/LoginComponent';
 import Test from '../components/TestComponent';
 import Map from '../components/MapComponent';
+import Chart from '../components/ChartComponent';
 Vue.use(VueRouter)
 
   const routes = [
@@ -56,6 +57,11 @@ Vue.use(VueRouter)
           path: '/map',
           name: 'map',
           component: Map
+      },
+      {
+          path: '/chart',
+          name: 'chart',
+          component: Chart
       }
 ]
 
