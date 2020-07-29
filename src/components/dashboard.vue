@@ -6,7 +6,7 @@
                                 <v-col cols="3">
 
                                 </v-col>
-                                <v-col cols="3" class="ml-16">
+                                <v-col cols="3" class="pl-0">
                                         <v-text-field
                                                 label="Search"
                                                 outlined
@@ -16,10 +16,32 @@
                                         </v-text-field>
 
                                 </v-col>
+                                <v-col cols="2">
+                                        <v-menu
+                                                v-model="menu2"
+                                                :close-on-content-click="false"
+                                                :nudge-right="40"
+                                                transition="scale-transition"
+                                                offset-y
+                                                min-width="290px"
+                                        >
+                                                <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field
+                                                                v-model="date"
+                                                                solo
+                                                                append-icon="event"
+                                                                style="background-color: orange; height: 50%;"
+                                                                readonly
+                                                                v-bind="attrs"
+                                                                v-on="on"
+                                                        ></v-text-field>
+                                                </template>
+                                                <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+                                        </v-menu>
+                                </v-col>
                         </v-row>
                 <v-row>
                         <v-col cols="3">
-
                         </v-col>
                         <v-col cols="6" >
                                 <v-row col="12" >
@@ -48,11 +70,6 @@
                                                         </v-card-text>
                                                 </v-card>
                                         </v-col>
-
-
-
-
-
                                         <v-col col="8" style="padding-left: 0px; padding-right: 0px">
                                                 <v-card
                                                         style="height: 100%;width:75%"
@@ -66,20 +83,57 @@
                                 </v-row>
                         </v-col>
                         <v-col cols="3">
+                        </v-col>
+                </v-row>
+                <v-row>
+                        <v-col cols="6"></v-col>
+                        <v-col cols="3">
+                                <v-alert
+                                        v-model="alert"
+                                        dismissible
+                                        close-icon="mdi-close-circle-outline"
+                                        color="black"
+                                        border="left"
+                                        elevation="2"
+                                        colored-border
+                                        width="300px"
+
+                                >
+                                        Hello John!<br>
+                                        <strong>Have a nice day at work!</strong>
+                                </v-alert>
+                        </v-col>
+                </v-row>
+
+                <v-row>
+                        <v-col cols="3">
+                        </v-col>
+                        <v-col cols="6" >
+                                <v-card
+                               style="height: 400px;width: 750px"
+                                >
+                                        <v-spacer></v-spacer>
+                                        <v-card-text>
+                                                <div id="charts">
+                                                        <apexchart type="line" height="350" :options="chartOptionsBar" :series="seriesBar"></apexchart>
+                                                </div>
+
+                                        </v-card-text>
+
+                                </v-card>
+                        </v-col>
+                        <v-col cols="3">
 
                         </v-col>
                 </v-row>
 
-                        <v-row>
+                 <v-row>
                                 <v-col cols="3">
-
                                 </v-col>
                                 <v-col cols="6" >
                                         <v-card
                                                   style="height: 300px;width: 80%"
                                         >
-<!--                                                class="mx-auto"-->
-<!--                                                height="100%"-->
                                                 <v-spacer></v-spacer>
                                                 <v-card-text>
                                                         <div id="chart" >
@@ -93,9 +147,10 @@
                                 <v-col cols="3">
 
                                 </v-col>
-                        </v-row>
-        </div>
+                 </v-row>
 
+
+        </div>
 </template>
 
 <script>
@@ -108,30 +163,67 @@
         name: "Dashboard",
         components:{
 
-          /*'left-nav-drawe-component' : LeftNavigationDrawerComponent,
+          /*
+          'left-nav-drawe-component' : LeftNavigationDrawerComponent,
           'right-nav-drawe-component' : RightNavigationDraweComponent,
-            'mobile-res-component' : MobileResComponent*/
+          'mobile-res-component' : MobileResComponent
+           */
         },
         data: () => ({
+                date: new Date().toISOString().substr(0, 10),
+                menu2: false,
                 // props: ['primaryDrawer.mini']
                 // drawer: null,
                 // primaryDrawer: {
                 //         mini: false
                 // }
+                seriesBar:
+                        [{
+                                name: 'Website Blog',
+                                type: 'column',
+                                data: [440, 505, 414, 671]
+                        },
+                                {
+                                        name: 'Social Media',
+                                        type: 'line',
+                                        data: [23, 42, 35, 27]
+                                }],
+                chartOptionsBar: {
+                        chart: {
+                                height: 350,
+                                type: 'line',
+                        },
+                        stroke: {
+                                width: [0, 4]
+                        },
+                        title: {
+                                // text: 'Traffic Sources'
+                        },
+                        dataLabels: {
+                                enabled: true,
+                                enabledOnSeries: [1]
+                        },
+                        labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001'],
+                        xaxis: {
+                                type: 'datetime'
+                        },
+                        yaxis: [{
+                                title: {
+                                        // text: 'Website Blog',
+                                },
 
+                        }, {
+                                opposite: true,
+                                title: {
+                                        // text: 'Social Media'
+                                }
+                        }]
+                },
                 series: [35, 42, 11, 12],
                 chartOptions: {
                         chart: {
                                 width: 380,
-                                type: 'donut',
-                                // dropShadow: {
-                                //         enabled: true,
-                                //         color: '#111',
-                                //         top: -1,
-                                //         left: 3,
-                                //         blur: 3,
-                                //         opacity: 0.2
-                                // }
+                                type: 'line',
                         },
                         stroke:{
                                 width: 0,
@@ -197,12 +289,6 @@
 
                         fill: {
                                 colors: [ '#14A5FF','#B3D2FE','#14D2FF','#193B68'],
-                                // type: 'pattern',
-                                // opacity: 1,
-                                // pattern: {
-                                //         enabled: true,
-                                //         style: ['verticalLines', 'squares', 'horizontalLines', 'circles','slantedLines'],
-                                // },
                         },
                         states: {
                                 hover: {
@@ -220,15 +306,8 @@
                                         title: {
 
                                         },
-                                        // custom: function({ series}) {
-                                        //         return "<div>" + series + "</div>";
-                                        // }
                                 }
                         },
-
-                        // markers: {
-                        //         colors: ['#B3D2FE','#14D2FF', '#193B68', '#14A5FF']
-                        // },
                         responsive: [{
                                 breakpoint:0,
                                 options: {
@@ -236,14 +315,7 @@
                                                 width: 100
                                         },
                                         legend: {
-                                                // formatter: function(val, opts) {
-                                                //         return val + " - " + opts.w.globals.series[opts.seriesIndex]
-                                                // }
-                                                //show: false,
                                                 position: 'bottom',
-                                                // position: 'right',
-                                                // offsetY: 0,
-                                                // height: 230,
                                         }
                                 }
                         }]
@@ -253,6 +325,16 @@
     }
 </script>
 <style>
+        /*.dropdown-menu:before {*/
+        /*        border-bottom: 41px solid #FFFCF5;*/
+        /*        border-left: 53px solid rgba(0, 0, 0, 0);*/
+        /*        border-right: 1px solid rgba(0, 0, 0, 0);*/
+        /*        content: "";*/
+        /*        display: inline-block;*/
+        /*        position: absolute;*/
+        /*        right: 0px;*/
+        /*        top: -38px;*/
+        /*}*/
         .DashboardTriangle:before {
                 content: '';
                 display: block;
@@ -274,8 +356,8 @@
                 content: '';
                 display: block;
                 position: absolute;
-                top: -10px;
-                left: 240px;
+                top: 7px;
+                left: -23px;
                 width: 40px;
                 height: 40px;
                 background: #ECECEC;

@@ -38,6 +38,20 @@
 
 
                     <img src="@/assets/images/tri.svg"/>
+<!--                <drop-down class="nav-item "-->
+<!--                           title="5 Notifications"-->
+<!--                           title-classes="nav-link"-->
+<!--                           icon="ti-bell"-->
+<!--                >-->
+<!--                    <ul class="triangleAtLink">-->
+<!--                        <a class="dropdown-item" href="#">Notification 1</a>-->
+<!--                        <a class="dropdown-item" href="#">Notification 2</a>-->
+<!--                        <a class="dropdown-item" href="#">Notification 3</a>-->
+<!--                        <a class="dropdown-item" href="#">Notification 4</a>-->
+<!--                        <a class="dropdown-item" href="#">Another notification</a>-->
+<!--                    </ul>-->
+
+<!--                </drop-down>-->
 
             </v-toolbar>
             <v-toolbar flat>
@@ -268,6 +282,16 @@
 </script>
 
 <style>
+    .triangleAtLink:before {
+        border-bottom: 41px solid #FFFCF5;
+        border-left: 53px solid rgba(0, 0, 0, 0);
+        border-right: 1px solid rgba(0, 0, 0, 0);
+        content: "";
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: -38px;
+    }
     .v-navigation-drawer {
         overflow: visible;
         box-shadow: 0 0 5px rgba(97, 97, 97, 0.4);
