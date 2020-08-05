@@ -1,21 +1,25 @@
 <template>
     <div>
         <v-row>
-            <v-col cols="3">
+            <v-col cols="4" >
+                <v-alert
+                elevation="24"
+                icon="mdi-spider"
+                type="success"
+                class="successClass"
+                >
+                    I'm a success alert.
+                </v-alert>
             </v-col>
-            <v-col cols="6" >
-                <v-card>
-                    <v-card-text>
-                        <div id="charts">
-                            <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
-                        </div>
-
-                    </v-card-text>
-
-                </v-card>
+            <v-col cols="4" >
+                <v-alert type="info">
+                    I'm an info alert.
+                </v-alert>
             </v-col>
-            <v-col cols="3">
-
+            <v-col cols="4" >
+                <v-alert type="warning">
+                    I'm a warning alert.
+                </v-alert>
             </v-col>
         </v-row>
     </div>
@@ -25,53 +29,18 @@
         name: "TestComponent",
 
         data: () => ({
-            series:
-            [{
-                name: 'Website Blog',
-                type: 'column',
-                data: [440, 505, 414, 671]
-            },
-            {
-                name: 'Social Media',
-                type: 'line',
-                data: [23, 42, 35, 27]
-            }],
-            chartOptions: {
-                chart: {
-                    height: 350,
-                    type: 'line',
-                },
-                stroke: {
-                    width: [0, 4]
-                },
-                title: {
-                    // text: 'Traffic Sources'
-                },
-                dataLabels: {
-                    enabled: true,
-                    enabledOnSeries: [1]
-                },
-                labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001'],
-                xaxis: {
-                    type: 'datetime'
-                },
-                yaxis: [{
-                    title: {
-                        // text: 'Website Blog',
-                    },
-
-                }, {
-                    opposite: true,
-                    title: {
-                        // text: 'Social Media'
-                    }
-                }]
-            },
 
 
         }),
     }
 </script>
-<style scoped>
+<style >    /*lang="scss"*/
+
+    /*@import "../../src/sass/variables.sass";*/
+    .successClass{
+        /*border-radius: 30px;*/
+        height: 200px;
+        /*font-size: 45px;*/
+    }
 
 </style>

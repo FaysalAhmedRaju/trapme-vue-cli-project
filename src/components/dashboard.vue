@@ -85,6 +85,22 @@
                         <v-col cols="3">
                         </v-col>
                 </v-row>
+<!--                <v-row>-->
+<!--                        <v-col cols="6"></v-col>-->
+<!--                        <v-col cols="3">-->
+<!--                                <v-progress-circular-->
+<!--                                        :rotate="90"-->
+<!--                                        :size="100"-->
+<!--                                        :width="5"-->
+<!--                                        :value="value"-->
+<!--                                        color="#14D2FF"-->
+
+<!--                                >-->
+<!--                                        {{ value }} %-->
+<!--                                </v-progress-circular>-->
+<!--                        </v-col>-->
+<!--                </v-row>-->
+
                 <v-row>
                         <v-col cols="6"></v-col>
                         <v-col cols="3">
@@ -102,6 +118,59 @@
                                         Hello John!<br>
                                         <strong>Have a nice day at work!</strong>
                                 </v-alert>
+                        </v-col>
+                </v-row>
+                <v-row>
+                        <v-col cols="3">
+                        </v-col>
+                        <v-col cols="5" >
+                                <v-card>
+                                        <v-row>
+
+                                                <v-col class="col-3" >
+                                                        <div>
+                                                                <v-card-title>
+
+                                                                        <span class="title font-weight-dark">Device Events</span>
+                                                                </v-card-title>
+                                                                <v-card-text>
+                                                                        <h4>Reboot</h4>
+                                                                        <div>37</div>
+                                                                </v-card-text>
+                                                                <v-card-text>
+                                                                        <h4>Low Temperature</h4>
+                                                                        <div>11892</div>
+                                                                </v-card-text>
+                                                                <v-card-text>
+                                                                        <h4>High Temperature</h4>
+                                                                        <div>147</div>
+                                                                </v-card-text>
+                                                                <v-card-text>
+                                                                        <h4>Missing Routine Data</h4>
+                                                                        <div>3926</div>
+                                                                </v-card-text>
+                                                        </div>
+
+                                                </v-col>
+                                                <v-col class="col-6" style="border-left: 0.5px solid #A3A3A3;">
+                                                        <v-card-text>
+                                                                <div class="chart2">
+                                                                        <apexchart type="donut" width="380" :options="chartOptions"   :series="series">
+                                                                        </apexchart>
+                                                                </div>
+                                                        </v-card-text>
+                                                </v-col>
+
+                                                <v-col class="col-3">
+
+                                                </v-col>
+
+                                        </v-row>
+                                </v-card>
+
+                        </v-col>
+                        <v-col cols="4">
+
                         </v-col>
                 </v-row>
 
@@ -127,29 +196,6 @@
                         </v-col>
                 </v-row>
 
-                 <v-row>
-                                <v-col cols="3">
-                                </v-col>
-                                <v-col cols="6" >
-                                        <v-card
-                                                  style="height: 300px;width: 80%"
-                                        >
-                                                <v-spacer></v-spacer>
-                                                <v-card-text>
-                                                        <div id="chart" >
-                                                                <apexchart type="donut" width="380" :options="chartOptions"   :series="series">
-                                                                </apexchart>
-                                                        </div>
-                                                </v-card-text>
-
-                                        </v-card>
-                                </v-col>
-                                <v-col cols="3">
-
-                                </v-col>
-                 </v-row>
-
-
         </div>
 </template>
 
@@ -158,7 +204,8 @@
     /*import LeftNavigationDrawerComponent from "./LeftNavigationDrawerComponent";
     import RightNavigationDraweComponent from "./RightNavigationDrawerComponent";
     import MobileResComponent from "./MobileResComponent";*/
-
+    // import BarChart from '@/components/Charts/BarChart';
+    // import * as chartConfigs from '@/components/Charts/config';
     export default {
         name: "Dashboard",
         components:{
@@ -168,8 +215,10 @@
           'right-nav-drawe-component' : RightNavigationDraweComponent,
           'mobile-res-component' : MobileResComponent
            */
+
         },
         data: () => ({
+                value: 70,
                 date: new Date().toISOString().substr(0, 10),
                 menu2: false,
                 // props: ['primaryDrawer.mini']
@@ -321,58 +370,63 @@
                         }]
                 },
 
+
         }),
     }
 </script>
 <style>
-        /*.dropdown-menu:before {*/
-        /*        border-bottom: 41px solid #FFFCF5;*/
-        /*        border-left: 53px solid rgba(0, 0, 0, 0);*/
-        /*        border-right: 1px solid rgba(0, 0, 0, 0);*/
-        /*        content: "";*/
-        /*        display: inline-block;*/
-        /*        position: absolute;*/
-        /*        right: 0px;*/
-        /*        top: -38px;*/
+        /*.v-progress-circular__underlay{*/
+        /*        stroke: rgba(255,0,0, 1.1) !important;*/
+        /* }*/
+
+        /* .v-progress-circular__info{*/
+
+        /*     background: rgb(61, 170, 42);*/
+        /*     border-radius: 50%;*/
+        /*     width: 90px;*/
+        /*    height: 90px;*/
+        /*    color: #111111;*/
+        /*    font-weight: bold;*/
         /*}*/
-        .DashboardTriangle:before {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 7px;
-                left: 260px;
-                width: 40px;
-                height: 40px;
-                background: #ECECEC;
-                -moz-transform: rotate(133deg);
-                -webkit-transform: rotate(133deg);
-                border-top-left-radius: 11px;
-                -webkit-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
-                -moz-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
-                box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
-        }
 
-        .DashboardTriangle-two:before {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 7px;
-                left: -23px;
-                width: 40px;
-                height: 40px;
-                background: #ECECEC;
-                -moz-transform: rotate(133deg);
-                -webkit-transform: rotate(133deg);
-                border-top-left-radius: 11px;
-                -webkit-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
-                -moz-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
-                box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
-        }
+             .DashboardTriangle:before {
+                     content: '';
+                     display: block;
+                     position: absolute;
+                     top: 7px;
+                     left: 260px;
+                     width: 40px;
+                     height: 40px;
+                     background: #ECECEC;
+                     -moz-transform: rotate(133deg);
+                     -webkit-transform: rotate(133deg);
+                     border-top-left-radius: 11px;
+                     -webkit-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+                     -moz-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+                     box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+             }
 
-        .rounded-corner{
-                border-radius:50px;
-        }
-     /*.mainResponsiveClass{*/
+             .DashboardTriangle-two:before {
+                     content: '';
+                     display: block;
+                     position: absolute;
+                     top: 7px;
+                     left: -23px;
+                     width: 40px;
+                     height: 40px;
+                     background: #ECECEC;
+                     -moz-transform: rotate(133deg);
+                     -webkit-transform: rotate(133deg);
+                     border-top-left-radius: 11px;
+                     -webkit-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+                     -moz-box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+                     box-shadow: inset 2px 2px 2px 0px rgba(183, 183, 183, 0.39);
+             }
+
+             .rounded-corner{
+                     border-radius:50px;
+             }
+          /*.mainResponsiveClass{*/
      /*        width: 100% !important;*/
      /*        padding: 0% 27.96% 0% 19.25% !important;*/
      /*}*/
@@ -433,5 +487,9 @@
     /*.two__image{*/
     /*    clip-path: circle();*/
     /*}*/
+        .chart2{
+                /*background-color: #DCF8FF;*/
+                width: 362px;
+        }
 </style>
 

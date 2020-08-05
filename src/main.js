@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import apexchart from './plugins/apexcharts';
+import './styles/index.scss';
 // import loginCom from './login.vue'
 Vue.config.productionTip = false
 // Vue.component('my-first-component', loginCom);

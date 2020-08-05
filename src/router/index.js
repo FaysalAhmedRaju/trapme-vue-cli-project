@@ -4,69 +4,71 @@ import VueRouter from 'vue-router'
 import MainComponent from "../components/MainComponent";
 import About from '../views/About';
 import Login from '../components/LoginComponent';
-import Test from '../components/TestComponent';
+// import Test from '../components/TestComponent';
 import Map from '../components/MapComponent';
 import Chart from '../components/ChartComponent';
+
 Vue.use(VueRouter)
 
-  const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-      path: '/main',
-      name: 'Main',
-      component: MainComponent,
-      // children: [
-      //     //
-      //     name: 'Dashboard',
-      //     path: '',
-      //     component: () => import('@/views/Dashboard'),
-      // ]
-  },
- {
-     path: '/',
-     redirect: '/main',
-     name: 'main',
-     component: MainComponent
+const routes = [
+    // {
+    //   path: '/',
+    //   name: 'Home',
+    //   component: Home
+    // },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    },
+    {
+        path: '/main',
+        name: 'Main',
+        component: MainComponent,
+        // children: [
+        //     //
+        //     name: 'Dashboard',
+        //     path: '',
+        //     component: () => import('@/views/Dashboard'),
+        // ]
+    },
+    {
+        path: '/',
+        redirect: '/main',
+        name: 'main',
+        component: MainComponent
 
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
-  },
-  {
-      path: '/test',
-      name: 'test',
-      component: Test
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/test',
+        name: 'test',
+        // component: Test
+        component: () => import('@/components/TestComponent'),
 
-  },
-      {
-          path: '/map',
-          name: 'map',
-          component: Map
-      },
-      {
-          path: '/chart',
-          name: 'chart',
-          component: Chart
-      }
+    },
+    {
+        path: '/map',
+        name: 'map',
+        component: Map
+    },
+    {
+        path: '/chart',
+        name: 'chart',
+        component: Chart
+    }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

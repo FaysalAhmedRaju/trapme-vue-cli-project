@@ -106,8 +106,89 @@
                                                     :rotate="90"
                                                     :size="100"
                                                     :width="5"
-                                                    :value="value"
+                                                    :value="45"
                                                     color="#14D2FF"
+                                                    class="progressCircularFirst"
+
+                                            >
+                                                45 %
+                                            </v-progress-circular>
+                                        </div>
+                                    </v-col>
+
+                                </v-row>
+                                <v-divider></v-divider>
+                                <v-row>
+                                    <v-col cols="8">
+                                        <v-card-title>
+                                            <v-icon
+                                                    large
+                                                    left
+                                                    color="#00E5FF"
+                                                    class="create-circle"
+                                            >
+                                                mdi-account
+                                            </v-icon>
+
+
+                                            <span class="title font-weight-dark">{{item.title}}</span>
+                                        </v-card-title>
+                                        <div>
+                                            <h4>Total Count: {{item.total_count}}</h4>
+                                        </div>
+                                        <div >
+                                            {{ item.content }}
+                                        </div>
+                                    </v-col>
+                                    <v-col cols="4" class="mt-6">
+                                        <div >
+                                            <v-progress-circular
+                                                    :rotate="90"
+                                                    :size="100"
+                                                    :width="5"
+                                                    :value="value"
+                                                    color="#77AFFF"
+                                                    class="progressCircularSecond"
+
+                                            >
+                                                {{ value=56 }} %
+                                            </v-progress-circular>
+                                        </div>
+                                    </v-col>
+
+                                </v-row>
+                                <v-divider></v-divider>
+                                <v-row>
+                                    <v-col cols="8">
+                                        <v-card-title>
+                                            <v-icon
+                                                    large
+                                                    left
+                                                    color="#00E5FF"
+                                                    class="create-circle"
+                                            >
+                                                mdi-account
+                                            </v-icon>
+
+
+                                            <span class="title font-weight-dark">{{item.title}}</span>
+                                        </v-card-title>
+                                        <div>
+                                            <h4>Total Count: {{item.total_count}}</h4>
+                                        </div>
+                                        <div >
+                                            {{ item.content }}
+                                        </div>
+                                    </v-col>
+                                    <v-col cols="4" class="mt-6">
+                                        <div >
+                                            <v-progress-circular
+                                                    :rotate="90"
+                                                    :size="100"
+                                                    :width="5"
+                                                    :value="value"
+                                                    color="#14A5FF"
+                                                    class="progressCircularThird"
 
                                             >
                                                 {{ value }} %
@@ -146,85 +227,8 @@
                                                     :size="100"
                                                     :width="5"
                                                     :value="value"
-                                                    color="#14D2FF"
-
-                                            >
-                                                {{ value }} %
-                                            </v-progress-circular>
-                                        </div>
-                                    </v-col>
-
-                                </v-row>
-                                <v-divider></v-divider>
-                                <v-row>
-                                    <v-col cols="8">
-                                        <v-card-title>
-                                            <v-icon
-                                                    large
-                                                    left
-                                                    color="#00E5FF"
-                                                    class="create-circle"
-                                            >
-                                                mdi-account
-                                            </v-icon>
-
-
-                                            <span class="title font-weight-dark">{{item.title}}</span>
-                                        </v-card-title>
-                                        <div>
-                                            <h4>Total Count: {{item.total_count}}</h4>
-                                        </div>
-                                        <div >
-                                            {{ item.content }}
-                                        </div>
-                                    </v-col>
-                                    <v-col cols="4" class="mt-6">
-                                        <div >
-                                            <v-progress-circular
-                                                    :rotate="90"
-                                                    :size="100"
-                                                    :width="5"
-                                                    :value="value"
-                                                    color="#14D2FF"
-
-                                            >
-                                                {{ value }} %
-                                            </v-progress-circular>
-                                        </div>
-                                    </v-col>
-
-                                </v-row>
-                                <v-divider></v-divider>
-                                <v-row>
-                                    <v-col cols="8">
-                                        <v-card-title>
-                                            <v-icon
-                                                    large
-                                                    left
-                                                    color="#00E5FF"
-                                                    class="create-circle"
-                                            >
-                                                mdi-account
-                                            </v-icon>
-
-
-                                            <span class="title font-weight-dark">{{item.title}}</span>
-                                        </v-card-title>
-                                        <div>
-                                            <h4>Total Count: {{item.total_count}}</h4>
-                                        </div>
-                                        <div >
-                                            {{ item.content }}
-                                        </div>
-                                    </v-col>
-                                    <v-col cols="4" class="mt-6">
-                                        <div >
-                                            <v-progress-circular
-                                                    :rotate="90"
-                                                    :size="100"
-                                                    :width="5"
-                                                    :value="value"
-                                                    color="#14D2FF"
+                                                    color="#2C3040"
+                                                    class="progressCircular"
 
                                             >
                                                 {{ value }} %
@@ -281,7 +285,7 @@
     }
 </script>
 
-<style>
+<style lang="scss">
     .triangleAtLink:before {
         border-bottom: 41px solid #FFFCF5;
         border-left: 53px solid rgba(0, 0, 0, 0);
@@ -297,14 +301,41 @@
         box-shadow: 0 0 5px rgba(97, 97, 97, 0.4);
     }
     .v-progress-circular__underlay{
-        stroke: rgba(20, 210, 255, 0.15);
+        stroke: rgba(0, 0, 0, 0)!important;
+        /*stroke: rgba(20, 210, 255, 0.15);*/
     }
-    .v-progress-circular__info{
+    .progressCircularFirst{
         background: rgba(20, 210, 255, 0.15);
         border-radius: 50%;
         width: 90px;
         height: 90px;
-        color: #111111;
+        color: #2C3040;
+        font-weight: bold;
+    }
+    .progressCircularSecond{
+        background: #EBF3FF;
+        border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        color: #77AFFF;
+        font-weight: bold;
+    }
+    .progressCircular{
+        /*stroke: rgba(20, 210, 255, 0.15);*/
+        background: rgba(20, 210, 255, 0.15);
+        border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        color: #2C3040;
+        font-weight: bold;
+
+    }
+    .progressCircularThird{
+        background: #DCF1FF;
+        border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        color: #14A5FF;
         font-weight: bold;
     }
     /*.icon-circle{*/
