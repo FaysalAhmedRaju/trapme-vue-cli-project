@@ -7,13 +7,27 @@
             class="right-nav-weight rightNavigationTriangle hidden-xs-only"
             app
     > <!--                :width="382" 27.96%-->
+
         <template>
             <v-toolbar flat
-                       class="rightNavigationTriangle"
+                       class="rightNavigationTriangle  triangleAtLink"
             >
                 <v-spacer></v-spacer>
 
-                    <div style="padding-right: 80px; ">
+              <div style="padding-right: 80px;"  >
+                      <v-menu
+                          :nudge-left="280"
+                          :nudge-bottom="50"
+                      >
+                      <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                          depressed
+                          icon
+                          v-bind="attrs"
+                          v-on="on"
+                      >
+<!--                        <v-btn  class="ma-2" outlined fab >-->
+
                         <v-card
                                 style="height: 35px;width: 35px;padding-left: 6px; padding-top: 5px;"
                         >
@@ -24,34 +38,163 @@
                                 <v-icon color="#2C3040"  style="height: 17px; width: 17.85px; text-align: center;">mdi-bell</v-icon>
                             </v-badge>
                         </v-card>
-                    </div>
+
+                      </v-btn>
+                      </template>
+
+                        <v-card
+                            class="notificationCard"
+                        >
+                      <v-list
+                          subheader
+                          three-line
+
+                      >
+                        <v-subheader><strong>YOUR NOTIFICATION</strong></v-subheader>
+                        <v-divider></v-divider>
+                        <v-list-item
+                            v-for="(item, index) in notifications"
+                            :key="index"
+                            @click="seeNotification"
+                            three-line
+                        >
+                          <v-list-item-content>
+                          <v-list-item-title>{{ item.title }}</v-list-item-title>
+                          <v-list-item-subtitle>{{item.time}}</v-list-item-subtitle>
+                            <v-divider></v-divider>
+                          </v-list-item-content>
+
+                        </v-list-item>
+                      </v-list>
+                        </v-card>
+                      </v-menu>
+      </div>
+              <v-menu
+                  v-model="menu"
+                  :nudge-width="100"
+                  offset-y
+              >
+                <!--              :close-on-content-click="false"-->
+              <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                  depressed
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+              >
                     <v-avatar
                             class="mr-2"
                             size="32"
-
                     >
                         <v-img width="5" src="@/assets/images/john.png"/>
                     </v-avatar>
-                    <v-list-item-content style="max-width: 73px">
-                        <v-list-item-title>John Doe</v-list-item-title>
+                </v-btn>
+              </template>
+              <v-card
+
+              >
+                <!--                  class="triangleAtLink"-->
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-avatar>
+                      <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                      <v-list-item-title>JOHN DOE</v-list-item-title>
+                      <v-list-item-subtitle>johndoe@gmail.com</v-list-item-subtitle>
                     </v-list-item-content>
+                  </v-list-item>
+                </v-list>
+                <v-divider></v-divider>
+                <v-list>
+                  <v-list-item
+                      @click="myProfile"
+                  >
+                    <v-list-item-title>My profile</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item
+                      @click="settings"
+                  >
+                    <v-list-item-title>Settings</v-list-item-title>
+                  </v-list-item>
+                  <v-list-item
+                      @click="help_support"
+                  >
+                    <v-list-item-title>Help & Support</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+                <v-divider></v-divider>
+                <v-list>
+                  <v-list-item
+                      @click="signOut"
+                  >
+                    <v-list-item-title>Sign Out</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-card>
+              </v-menu>
 
+              <v-menu
+                  v-model="menu"
+                  :nudge-width="100"
+                  offset-y
+              >
+                <!--              :close-on-content-click="false"-->
+                <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                  depressed
+                  v-bind="attrs"
+                  v-on="on"
+              > John Doe
+<!--                    <v-list-item-content style="max-width: 73px">-->
+<!--                        <v-list-item-title>John Doe</v-list-item-title>-->
+<!--                    </v-list-item-content>-->
+                <img src="@/assets/images/tri.svg"/>
+              </v-btn>
+                </template>
+                <v-card
+                >
+                  <v-list>
+                    <v-list-item>
+                      <v-list-item-avatar>
+                        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                      </v-list-item-avatar>
 
-                    <img src="@/assets/images/tri.svg"/>
-<!--                <drop-down class="nav-item "-->
-<!--                           title="5 Notifications"-->
-<!--                           title-classes="nav-link"-->
-<!--                           icon="ti-bell"-->
-<!--                >-->
-<!--                    <ul class="triangleAtLink">-->
-<!--                        <a class="dropdown-item" href="#">Notification 1</a>-->
-<!--                        <a class="dropdown-item" href="#">Notification 2</a>-->
-<!--                        <a class="dropdown-item" href="#">Notification 3</a>-->
-<!--                        <a class="dropdown-item" href="#">Notification 4</a>-->
-<!--                        <a class="dropdown-item" href="#">Another notification</a>-->
-<!--                    </ul>-->
-
-<!--                </drop-down>-->
+                      <v-list-item-content>
+                        <v-list-item-title>JOHN DOE</v-list-item-title>
+                        <v-list-item-subtitle>johndoe@gmail.com</v-list-item-subtitle>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list>
+                  <v-divider></v-divider>
+                  <v-list>
+                    <v-list-item
+                        @click="myProfile"
+                    >
+                      <v-list-item-title>My profile</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item
+                        @click="settings"
+                    >
+                      <v-list-item-title>Settings</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item
+                        @click="help_support"
+                    >
+                      <v-list-item-title>Help & Support</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                  <v-divider></v-divider>
+                  <v-list>
+                    <v-list-item
+                        @click="signOut"
+                    >
+                      <v-list-item-title>Sign Out</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-card>
+              </v-menu>
 
             </v-toolbar>
             <v-toolbar flat>
@@ -255,6 +398,13 @@
     export default {
         name: "RightNavigationDrawerComponent",
         data: () => ({
+          notifications: [
+            { title: 'Your notification shows here.', time: '2 hours ago' },
+            { title: 'Your notification shows here.', time: '2 hours ago' },
+            { title: 'Your notification shows here.', time: '2 hours ago' },
+            { title: 'Your notification shows here.', time: '2 hours ago' },
+            { title: 'Your notification shows here.', time: '2 hours ago' },
+          ],
             value: 60,
             secondaryDrawer: {
                 model: null,
@@ -282,20 +432,43 @@
 
 
         }),
+      methods: {
+        seeNotification: function () {
+          alert('Hello You clicked Me ' + '!')
+          // alert(event.target.tagName)
+        },
+        myProfile: function (){
+          alert('You clicked My Profile')
+        },
+        settings: function (){
+          alert('You clicked Settings')
+        },
+        help_support: function (){
+          alert('You clicked Help & Support')
+        },
+        signOut: function (){
+          alert('You clicked Sign Out')
+        }
+      }
     }
 </script>
 
-<style lang="scss">
-    .triangleAtLink:before {
-        border-bottom: 41px solid #FFFCF5;
-        border-left: 53px solid rgba(0, 0, 0, 0);
-        border-right: 1px solid rgba(0, 0, 0, 0);
-        content: "";
-        display: inline-block;
-        position: absolute;
-        right: 0px;
-        top: -38px;
-    }
+<style>
+/*.triangleAtLink:before{*/
+/*  border-bottom: 41px solid #000000;*/
+/*  border-left: 53px solid #1565c0;*/
+/*  border-right: 1px solid #CDDC39;*/
+/*  content: "";*/
+/*  !*background: #FFFFFF;*!*/
+/*  !*display: inline-block;*!*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  right: 0px;*/
+/*  top: 15px;*/
+/*  !*-webkit-box-shadow: 2px 2px 2px 0px rgba(183, 183, 183, 0.39);*!*/
+/*  !*-moz-box-shadow: 2px 2px 2px 0px rgba(183, 183, 183, 0.39);*!*/
+/*  !*box-shadow: 2px 2px 2px 0px rgba(183, 183, 183, 0.39);*!*/
+/*}*/
     .v-navigation-drawer {
         overflow: visible;
         box-shadow: 0 0 5px rgba(97, 97, 97, 0.4);
