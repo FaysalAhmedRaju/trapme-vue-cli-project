@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 import MainComponent from "../components/MainComponent";
+import AgentsComponent from "../components/AgentsComponent";
 import About from '../views/About';
 import Login from '../components/LoginComponent';
 // import Test from '../components/TestComponent';
@@ -9,13 +10,8 @@ import Map from '../components/MapComponent';
 import Chart from '../components/ChartComponent';
 
 Vue.use(VueRouter)
-
+// const routes = [
 const routes = [
-    // {
-    //   path: '/',
-    //   name: 'Home',
-    //   component: Home
-    // },
     {
         path: '/about',
         name: 'About',
@@ -37,10 +33,23 @@ const routes = [
         // ]
     },
     {
-        path: '/',
-        redirect: '/main',
+        path: '/agents',
+        name: 'agents',
+        component: AgentsComponent,
+
+    },
+    {
+        path: '',
+       // redirect: '/main',
         name: 'main',
-        component: MainComponent
+        component: MainComponent,
+        children:[
+            {
+                path: '/agents',
+                name: 'agents',
+                component: AgentsComponent,
+            },
+        ]
 
     },
     {

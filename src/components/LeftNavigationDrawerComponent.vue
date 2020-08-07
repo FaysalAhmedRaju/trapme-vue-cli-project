@@ -28,18 +28,23 @@
         </v-list>
         <v-divider></v-divider>
         <v-list>
+
             <v-list-item
                     v-for="item in primaryDrawer.items"
                     :key="item.title"
                     link
+                    router :to="item.route"
             >
                 <v-list-item-icon>
                     <v-icon>{{ item.icon }}</v-icon>
                 </v-list-item-icon>
 
                 <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-title>
+                      {{ item.title }}
+                    </v-list-item-title>
                 </v-list-item-content>
+
             </v-list-item>
 
         </v-list>
@@ -68,15 +73,51 @@
                 mini: false,
                 miniWidth: 92,
                 items: [
-                    { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-                    { title: 'Agents', icon: 'mdi-headset' },
-                    { title: 'Clients', icon: 'mdi-account' },
-                    { title: 'Devices', icon: 'mdi-laptop-chromebook' },
-                    { title: 'Device History', icon: 'mdi-clock-check-outline' },
-                    { title: 'Traps', icon: 'mdi-view-parallel' },
-                    { title: 'Data Collector', icon: 'mdi-database' },
-                    { title: 'Support', icon: 'mdi-face-agent' },
-                    { title: 'Production', icon: 'mdi-decagram' },
+                    {
+                      title: 'Dashboard',
+                      icon: 'mdi-view-dashboard',
+                      route: '/'
+                    },
+                    {
+                      title: 'Agents',
+                      icon: 'mdi-headset',
+                      route: '/agents',
+                    },
+                    {
+                      title: 'Clients',
+                      icon: 'mdi-account',
+                      route: '/about',
+                    },
+                    {
+                      title: 'Devices',
+                      icon: 'mdi-laptop-chromebook',
+                      route: '/login',
+                    },
+                    {
+                      title: 'Device History',
+                      icon: 'mdi-clock-check-outline',
+                      route: '/test',
+                    },
+                    {
+                      title: 'Traps',
+                      icon: 'mdi-view-parallel',
+                      route: '/traps',
+                    },
+                    {
+                      title: 'Data Collector',
+                      icon: 'mdi-database',
+                      route: '/data-collector',
+                    },
+                    {
+                      title: 'Support',
+                      icon: 'mdi-face-agent',
+                      route: '/support',
+                    },
+                    {
+                      title: 'Production',
+                      icon: 'mdi-decagram',
+                      route: '/production',
+                    },
                 ],
             }
 

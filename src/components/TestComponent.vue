@@ -3,10 +3,8 @@
   <v-row>
     <v-col cols="2"></v-col>
     <v-col cols="4">
+
       <v-menu offset-y
-
-
-
       >
 <!--        :nudge-top="100"-->
         <template v-slot:activator="{ on, attrs }">
@@ -116,7 +114,9 @@
               <v-divider></v-divider>
               <v-list>
                 <v-list-item>
-                  <v-list-item-title>Sign Out</v-list-item-title>
+                  <v-list-item-title>
+                    <router-link to="/login">Sign Out</router-link>
+                    </v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-card>
@@ -136,7 +136,7 @@
           outlined
           tile
       >
-        <div>I'm a flexbox container!</div>
+        <div><router-link to="/agents">Link</router-link> </div>
       </v-card>
     </v-col>
     <v-col cols="4"></v-col>
